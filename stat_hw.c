@@ -5,9 +5,11 @@
 #include <stdlib.h>
 
 int main(){
-  printf("\nFile size: %d\n", st_size("file.txt"));
-  printf("\n Mode: %d\n", st_mode("file.txt"));
-  printf("\nTime of last access: %d", st_atime("file.txt"));
+  struct stat mybuffer;
+  stat("file.txt", &mybuffer);
+  printf("\nFile size: %d\n", mybuffer.st_size);
+  printf("\nMode: %d\n", mybuffer.st_mode);
+  printf("\nTime of last access: %s\n",ctime(&mybuffer.st_atime));
   return 1;
 }
 	 
